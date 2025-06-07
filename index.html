@@ -55,6 +55,23 @@
             --font-body: 'Roboto', sans-serif;
         }
 
+        /* === NEW: PAGE LOAD ANIMATION === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0; /* Start hidden */
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
         body {
             background-color: var(--bg-deep);
             background-image: linear-gradient(rgba(10, 20, 35, 0.8), rgba(5, 10, 20, 0.9)),
@@ -97,6 +114,7 @@
             text-shadow: 0 0 5px rgba(200, 170, 110, 0.5), 0 0 10px rgba(0,0,0,0.7);
             position: relative;
             max-width: 600px;
+            animation-delay: 0.1s; /* Stagger animation */
         }
 
          .main-title::before {
@@ -116,6 +134,7 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            animation-delay: 0.2s; /* Stagger animation */
         }
 
         #championSearchInput {
@@ -145,6 +164,12 @@
         .champion-section {
             margin-bottom: 35px;
         }
+        /* Stagger page load animation for sections */
+        .page-wrapper > .champion-section:nth-of-type(3) { animation-delay: 0.3s; }
+        .page-wrapper > .champion-section:nth-of-type(5) { animation-delay: 0.4s; }
+        .page-wrapper > .champion-section:nth-of-type(7) { animation-delay: 0.5s; }
+        .page-wrapper > .champion-section:nth-of-type(9) { animation-delay: 0.6s; }
+
 
         .section-label {
             color: var(--gold-primary);
@@ -158,7 +183,7 @@
             border-left: 4px solid var(--gold-primary);
             padding-left: 15px;
             text-shadow: 0 0 3px rgba(0,0,0,0.5);
-            transition: transform 0.2s ease-out, text-shadow 0.2s ease-out, filter 0.2s ease-out;
+            transition: transform 0.2s ease-out, text-shadow 0.2s ease-out, filter 0.2s ease-out, box-shadow 0.3s ease-out; /* MODIFIED: Added box-shadow transition */
             cursor: default;
         }
 
@@ -166,6 +191,7 @@
             transform: translateX(2px);
             text-shadow: 0 0 5px var(--gold-highlight);
             filter: brightness(1.05);
+            box-shadow: -4px 0 12px -2px var(--gold-bright); /* NEW: Added border glow effect */
         }
 
         .champion-icons {
@@ -177,7 +203,17 @@
 
         .champion-icon-wrapper {
             display: inline-block;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            /* MODIFIED: Added transitions for filtering animation */
+            transition: opacity 0.35s ease, transform 0.35s ease, width 0.35s ease, margin-right 0.35s ease;
+        }
+
+        /* NEW: Class for filtered out icons */
+        .champion-icon-wrapper.filtered-out {
+            opacity: 0;
+            transform: scale(0.5);
+            width: 0;
+            margin-right: -18px; /* Counteract the gap */
+            pointer-events: none;
         }
 
         .champion-icon-wrapper img {
@@ -226,6 +262,10 @@
             margin-top: 30px;
             box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
         }
+        /* Stagger page load animation for info sections */
+        .info-section.changelogs { animation-delay: 0.7s; }
+        .info-section.feedback { animation-delay: 0.8s; }
+
 
         .info-section h4 {
             color: var(--gold-highlight);
@@ -241,50 +281,37 @@
             text-shadow: 0 0 3px rgba(0,0,0,0.5);
         }
 
-        .changelogs ul { list-style: none; padding-left: 5px; margin: 0; }
-        .changelogs li {
-            color: var(--text-primary);
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 12px;
-            padding-left: 25px;
+        .changelog-content-wrapper {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 15px;
+            margin: 15px -15px 0 0;
+            padding-left: 5px;
             position: relative;
         }
-        .changelogs li::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 7px;
-            width: 8px;
-            height: 8px;
-            background-color: var(--gold-primary);
-            transform: rotate(45deg);
-            opacity: 0.8;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+        .changelog-content-wrapper {
+             scrollbar-width: thin;
+             scrollbar-color: var(--gold-secondary) var(--bg-element-inset);
         }
-        .changelogs li:hover::before {
-            background-color: var(--gold-bright);
-             transform: rotate(45deg) scale(1.1);
-         }
-        .changelogs li strong { font-weight: 700; color: var(--gold-highlight); }
-
-        .info-section.feedback h4 {
-            margin-bottom: 25px;
-            display: block;
-            text-align: left;
-            border-bottom: 1px solid var(--border-gold);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .feedback-links-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: flex-start;
-            align-items: center;
-            padding-top: 10px;
-        }
+        .changelog-content-wrapper::-webkit-scrollbar { width: 8px; }
+        .changelog-content-wrapper::-webkit-scrollbar-track { background: var(--bg-element-inset); }
+        .changelog-content-wrapper::-webkit-scrollbar-thumb { background-color: var(--gold-secondary); border: 1px solid var(--border-dark); border-radius: 2px; }
+        .changelog-content-wrapper::-webkit-scrollbar-thumb:hover { background-color: var(--gold-primary); }
+        .patch-list { list-style: none; padding: 0; margin: 0; }
+        .patch-item { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-dark); }
+        .patch-item:last-child { border-bottom: none; margin-bottom: 0; }
+        .log-date { color: var(--gold-bright); font-family: var(--font-title); font-size: 16px; letter-spacing: 1px; margin-bottom: 15px; font-weight: 500; }
+        .patch-details { list-style: none; padding: 0; margin: 0; }
+        .patch-details > li { margin-bottom: 15px; }
+        .patch-details > li:last-child { margin-bottom: 0; }
+        .patch-details > li > strong { color: var(--gold-highlight); font-weight: 700; font-size: 15px; display: block; margin-bottom: 8px; }
+        .change-list { list-style: none; padding-left: 10px; margin: 0; }
+        .change-list li { color: var(--text-primary); font-size: 14px; line-height: 1.7; margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .change-list li::before { content: ''; position: absolute; left: 5px; top: 7px; width: 8px; height: 8px; background-color: var(--gold-primary); transform: rotate(45deg); opacity: 0.8; transition: background-color 0.3s ease, transform 0.3s ease; }
+        .change-list li:hover::before { background-color: var(--gold-bright); transform: rotate(45deg) scale(1.1); }
+        .change-list li strong { font-weight: 700; color: var(--gold-highlight); }
+        .info-section.feedback h4 { margin-bottom: 25px; display: block; text-align: left; border-bottom: 1px solid var(--border-gold); width: 100%; box-sizing: border-box; }
+        .feedback-links-wrapper { display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start; align-items: center; padding-top: 10px; }
 
         .feedback-icon-link {
             display: inline-flex;
@@ -303,7 +330,7 @@
             transition: all 0.25s ease-in-out;
             position: relative;
             z-index: 1;
-            overflow: hidden;
+            overflow: hidden; /* MODIFIED: Required for shimmer effect */
              box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 1px rgba(0,0,0,0.2);
         }
 
@@ -316,6 +343,24 @@
             z-index: -1;
             transition: background 0.25s ease-in-out;
         }
+
+        /* === NEW: SHIMMER EFFECT === */
+        .feedback-icon-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            transform: skewX(-25deg);
+            transition: left 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .feedback-icon-link:hover::after {
+            left: 150%;
+        }
+        /* === END SHIMMER EFFECT === */
+
 
         .feedback-icon {
             width: 22px;
@@ -555,13 +600,13 @@
 <body>
 
     <div class="page-wrapper">
-        <h2 class="main-title">DanZ-AIO Champions</h2>
+        <h2 class="main-title fade-in-up">DanZ-AIO Champions</h2>
 
-        <div class="search-container">
+        <div class="search-container fade-in-up">
             <input type="search" id="championSearchInput" placeholder="Search Champions...">
         </div>
 
-        <div class="champion-section">
+        <div class="champion-section fade-in-up">
             <span class="section-label">Reworked</span>
             <div class="champion-icons">
                 <div class="champion-icon-wrapper">
@@ -572,7 +617,7 @@
 
         <hr class="section-separator">
 
-        <div class="champion-section">
+        <div class="champion-section fade-in-up">
             <span class="section-label">New</span>
             <div class="champion-icons">
                 <div class="champion-icon-wrapper">
@@ -597,7 +642,7 @@
 
         <hr class="section-separator">
 
-        <div class="champion-section">
+        <div class="champion-section fade-in-up">
             <span class="section-label">Supported</span>
             <div class="champion-icons">
                  <div class="champion-icon-wrapper">
@@ -629,7 +674,7 @@
 
          <hr class="section-separator">
 
-        <div class="champion-section">
+        <div class="champion-section fade-in-up">
             <span class="section-label">Beta</span>
             <div class="champion-icons">
                 <div class="champion-icon-wrapper">
@@ -638,18 +683,120 @@
             </div>
         </div>
 
-
-        <div class="info-section changelogs">
+        <div class="info-section changelogs fade-in-up">
             <h4>Changelogs</h4>
-            <ul>
-                 <li><strong>Jinx:</strong> Advanced W/R prediction modes added for enhanced accuracy.</li>
-                 <li><strong>Zeri:</strong> Added Passive tower interaction modes (Always/Charged/None).</li>
-                 <li><strong>Pyke:</strong> Menu visual enhancements & added option to disable E magnet effect.</li>
-                 <li><strong>General:</strong> Minor logic optimizations & code refinements across modules.</li>
-            </ul>
+            <div class="changelog-content-wrapper">
+                <ul class="patch-list">
+                    <!-- Patch Item -->
+                    <li class="patch-item">
+                        <div class="log-date">July 7, 2024 - Cassiopeia v5.0.0</div>
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Cassiopeia:</strong>
+                                <ul class="change-list">
+                                    <li><strong>Farming System:</strong> Reworked the entire farming logic with a new multi-mode system (Q Only, Q+E, etc.) and a keybind to cycle modes.</li>
+                                    <li><strong>Logic & Reworks:</strong> Overhauled AA blocking to prioritize spells. Reworked R combo logic with new modes: Never, Always (If Stunnable), and Below X% HP.</li>
+                                    <li><strong>Fixes:</strong> Fixed bugs where Q minion count was ignored and where Auto-Interrupt/Semi-Cast R didn't check if the target was facing.</li>
+                                    <li><strong>UI & Options:</strong> Added an option to disable Auto Q under turrets and updated the Permashow to display the active farm mode.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /Patch Item -->
+                    <li class="patch-item">
+                        <div class="log-date">July 6, 2024</div>
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Mel:</strong>
+                                <ul class="change-list">
+                                    <li><strong>W (Spell Shield):</strong> Reworked the entire reflection/blocking logic with an advanced interception system, auto-positioning, and improved timing.</li>
+                                    <li><strong>Drawings:</strong> Added a new, detailed visualizer for the W interception system.</li>
+                                    <li><strong>Farming:</strong> Optimized Q (Dark Matter) farming logic for better performance.</li>
+                                    <li><strong>Core Logic:</strong> The main script loop now prioritizes W interception logic for maximum survivability.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /Patch Item -->
+                    <li class="patch-item">
+                        <div class="log-date">July 2, 2024</div>
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Pyke:</strong>
+                                <ul class="change-list">
+                                    <li><strong>Menu & Controls:</strong> Converted "E Magnet" and "E Only After Q Hit" to keybind toggles with on-screen status indicators.</li>
+                                    <li><strong>E (Phantom Undertow):</strong> Reworked E Magnet logic for timing, tracking, positioning, and Flash follow for improved precision.</li>
+                                    <li><strong>Q (Bone Skewer):</strong> Improved prediction and collision accuracy for charged Qs.</li>
+                                    <li><strong>Script Core:</strong> Moved main update loop to `cb.tick` for more consistent performance.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /Patch Item -->
+                     <li class="patch-item">
+                        <div class="log-date">May 29, 2024</div>
+                        <ul class="patch-details">
+                             <li>
+                                <strong>Cassiopeia:</strong>
+                                <ul class="change-list">
+                                    <li><strong>Q (Noxious Blast):</strong> Fixed a bug where the minimum minion hit count for farming was not being respected, improving mana efficiency.</li>
+                                    <li><strong>R (Petrifying Gaze):</strong> Corrected Auto R Interrupt and Semi-Cast logic to properly check if the target is facing Cassiopeia before casting.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /Patch Item -->
+                     <li class="patch-item">
+                        <div class="log-date">May 16, 2024</div>
+                        <ul class="patch-details">
+                             <li>
+                                <strong>Caitlyn:</strong>
+                                <ul class="change-list">
+                                    <li><strong>R (Ace in the Hole):</strong> Added Semi-Auto R functionality with a keybind, allowing cast based on Lowest HP% or target nearest to the cursor.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /Patch Item -->
+                    <li class="patch-item">
+                        <div class="log-date">General Update - v4.5.0</div>
+                        <ul class="patch-details">
+                             <li>
+                                <strong>Senna:</strong>
+                                <ul class="change-list">
+                                    <li><strong>Q (Piercing Darkness):</strong> Added option to auto-use on CC'd allies and a minion slider for farming.</li>
+                                    <li><strong>Passive (Absolution):</strong> Soul collection range now always matches AA range.</li>
+                                    <li><strong>R (Dawning Shadow):</strong> Added "Save Ally" logic, minimap range display, and improved semi-manual targeting.</li>
+                                    <li><strong>Laneclear:</strong> Added an option to harass with Q and W during laneclear.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Jinx:</strong>
+                                <ul class="change-list">
+                                    <li><strong>W/R Spells:</strong> Added advanced accurate prediction mode for enhanced accuracy.</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>Zeri:</strong>
+                                <ul class="change-list">
+                                    <li><strong>Passive (Living Battery):</strong> Added different modes for tower interaction (Always, Only Charged, None).</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>Pyke:</strong>
+                                <ul class="change-list">
+                                    <li><strong>Menu:</strong> Improved visuals for a more user-friendly interface.</li>
+                                    <li><strong>E (Phantom Undertow):</strong> Added an option to disable "Magnet E".</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /Patch Item -->
+                </ul>
+            </div>
         </div>
 
-        <div class="info-section feedback">
+        <div class="info-section feedback fade-in-up">
             <h4>Feedback & Community</h4>
             <div class="feedback-links-wrapper">
                 <a id="discord-link" href="https://dsc.gg/danzaio" target="_blank" class="feedback-icon-link discord" title="Join the DanZ-AIO Discord">
@@ -971,6 +1118,7 @@
             }
         });
 
+        // === MODIFIED: SCRIPT FOR FILTERING ANIMATION ===
         searchInput.addEventListener('input', () => {
             const searchTerm = searchInput.value.toLowerCase().trim();
 
@@ -979,7 +1127,12 @@
                 if (img) {
                     const championName = img.getAttribute('alt').toLowerCase();
                     const isVisible = championName.includes(searchTerm);
-                    wrapper.style.display = isVisible ? '' : 'none';
+                    
+                    if (isVisible) {
+                        wrapper.classList.remove('filtered-out');
+                    } else {
+                        wrapper.classList.add('filtered-out');
+                    }
                 }
             });
         });

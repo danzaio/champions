@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -669,6 +670,9 @@
                  <div class="champion-icon-wrapper">
                     <img src="https://raw.communitydragon.org/latest/game/assets/characters/tristana/hud/tristana_square.png" alt="Tristana" title="Tristana" data-md-file="tristana.md" data-video-url="https://www.youtube.com/watch?v=Bg5Msx9U2pY,https://files.catbox.moe/qnik7c.mp4,https://files.catbox.moe/4ebje9.mp4">
                  </div>
+                 <div class="champion-icon-wrapper">
+                    <img src="https://raw.communitydragon.org/latest/game/assets/characters/varus/hud/varus_square_0.png" alt="Varus" title="Varus" data-md-file="varus.md">
+                 </div>
             </div>
         </div>
 
@@ -687,9 +691,541 @@
             <h4>Changelogs</h4>
             <div class="changelog-content-wrapper">
                 <ul class="patch-list">
+                    <!-- NEW PATCHES START -->
+                    <li class="patch-item">
+                        <ul class="patch-details">
+                            <li>
+                                <strong>DanZ-AIO: Varus Release</strong>
+                                <ul class="change-list">
+                                    <li>
+                                        <strong>Core: Playstyle System</strong>
+                                        <ul class="change-list">
+                                            <li>Select your build's playstyle to activate unique logic tailored for each mode: ADC / On-Hit, Lethality (Poke), and AP Burst.</li>
+                                            <li><strong>Prioritize Target with Most Blight:</strong> An intelligent targeting option that automatically focuses the enemy with the most Blight stacks, ensuring your detonations are always used on the most vulnerable target.</li>
+                                            <li><strong>Max DPS Sequence:</strong> A toggle for each playstyle to enable a devastating, pre-programmed R -> W -> Q -> E combo. When active, it executes a frame-perfect sequence to one-shot key targets the moment your ultimate is available.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Q (Piercing Arrow):</strong>
+                                        <ul class="change-list">
+                                            <li>Features a unique, custom-built prediction system developed from the ground up. It analyzes target movement, velocity, and pathing to ensure Piercing Arrow lands with maximum accuracy, even on erratic targets.</li>
+                                            <li><strong>Killsteal:</strong> Smart logic that calculates Q damage (including Blight detonation) to automatically secure kills that would otherwise escape.</li>
+                                            <li><strong>Poke Keys:</strong> Dedicated hotkeys for different situations: a standard key for mana-efficient Q poke, and a separate key for a high-damage, empowered W+Q poke.</li>
+                                            <li>
+                                                <strong>AP Options:</strong>
+                                                <ul class="change-list">
+                                                    <li><strong>Hold Q Release:</strong> Maximizes AP burst by holding the arrow until the target accumulates 3 Blight stacks for a devastating detonation.</li>
+                                                    <li><strong>CC Safety Release:</strong> A crucial safety feature that instantly releases a charging Q if you get hit by crowd control, preventing you from being animation-locked and vulnerable.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Farming:</strong> Highly configurable sliders to control when to use Q for clearing minion waves or jungle camps, based on the number of minions it will hit.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>W (Blighted Quiver):</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Auto-Activate:</strong> Seamlessly activates W the moment you begin charging Q, ensuring your arrow is always empowered for maximum damage without needing an extra key press.</li>
+                                            <li><strong>Execute Only Logic:</strong> A mana-saving feature, perfect for the AP playstyle, that only allows W activation if the subsequent empowered Q is calculated to be a killing blow.</li>
+                                            <li><strong>ADC Combo Detonation:</strong> Allows the ADC to perfectly weave in an empowered W->Q detonation once a target has enough Blight stacks from auto-attacks, controlled by a minimum stack slider.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>E (Hail of Arrows):</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Utility:</strong>
+                                                <ul class="change-list">
+                                                    <li><strong>Auto E on Immobile:</strong> Instantly blankets rooted or stunned targets with a slowing field, extending the duration of the lockdown.</li>
+                                                    <li><strong>Anti-Gapclose:</strong> Stops assassins and divers in their tracks by intelligently placing E directly in their path to halt their advance.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>ADC High-Speed Logic:</strong>
+                                                <ul class="change-list">
+                                                    <li><strong>Combo Opener:</strong> Option to start fights with E to apply an immediate slow and begin stacking Blight.</li>
+                                                    <li><strong>High-AS DPS Protection:</strong> Automatically disables E at high attack speeds to prevent the cast animation from interrupting your auto-attacks, ensuring maximum DPS.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Detonation:</strong> Provides an instant, reliable way to detonate Blight stacks—especially useful when Q is on cooldown or when the AOE slow and healing reduction are needed.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>R (Chain of Corruption):</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Combo Logic:</strong> Fully configurable R usage to match your strategy:
+                                                <ul class="change-list">
+                                                    <li><strong>Always Engage:</strong> To start a fight on the first opportunity.</li>
+                                                    <li><strong>Only if Target is Killable:</strong> As a finishing move when the full combo is fatal.</li>
+                                                    <li><strong>If it Hits X Enemies:</strong> For landing game-changing, multi-person ultimates in teamfights.</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>Auto-Usage:</strong>
+                                                <ul class="change-list">
+                                                    <li>Auto R on immobile targets for guaranteed lockdown.</li>
+                                                    <li>Use R to interrupt important enemy channels like Katarina's ultimate.</li>
+                                                    <li>Use R defensively to stop a champion from diving you.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Semi-Manual Cast:</strong> A dedicated hotkey that gives you full control for clutch plays, firing R at the highest-priority champion near your mouse with a single key press.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Visuals & Drawings:</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Status Display (HUD):</strong> A clean, on-screen Heads-Up Display to see your current script settings (Playstyle, R Logic, etc.) at a glance, without opening the menu.</li>
+                                            <li><strong>Spell Ranges:</strong> Clear, vibrant indicators for Q, E, and R ranges so you always know your effective threat radius.</li>
+                                            <li><strong>Damage Indicator:</strong> A live calculation on the enemy health bar showing if your full combo is lethal, helping you make the crucial decision to engage or disengage.</li>
+                                            <li><strong>Blight Stacks:</strong> Draws a visual counter above enemies, helping you know the perfect moment to detonate for maximum damage.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="patch-item">
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Zeri:</strong>
+                                <ul class="change-list">
+                                    <li>
+                                        <strong>Core & Menu</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Complete Rewrite:</strong> The entire script has been rewritten for maximum performance, stability, and accuracy.</li>
+                                            <li><strong>New Menu Interface:</strong> A redesigned and more intuitive menu with tooltips for clarity.</li>
+                                            <li>
+                                                <strong>Status Display System:</strong> Added two ways to monitor script settings in real-time:
+                                                <ul class="change-list">
+                                                    <li><strong>Permashow:</strong> A detailed status panel on the screen.</li>
+                                                    <li><strong>Next to Champion:</strong> A compact status display next to your character.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Damage Calculation:</strong> Damage formulas have been updated to be more precise, now including Passive and E-empowered Q damage.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Q (Burst Fire)</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Q-E-Q Combo:</strong> Added a new combo mode on a dedicated keybind to execute a seamless Q -> E -> Q burst.</li>
+                                            <li><strong>Chase into Fog of War:</strong> Added an option to automatically predict and fire Q at enemies who have just become invisible.</li>
+                                            <li>
+                                                <strong>Q on Wards:</strong> Added a new feature to automatically use Q to clear wards.
+                                                <ul class="change-list">
+                                                    <li><strong>Control Ward Tracking:</strong> The script now tracks and targets known Control Wards, even in the Fog of War.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>W (Ultrashock Laser)</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Perfected W Prediction:</strong> The prediction for W has been completely overhauled.
+                                                <ul class="change-list">
+                                                    <li><strong>Advanced Prediction Mode:</strong> Added an optional, highly accurate prediction for both normal and wall-extended W casts.</li>
+                                                    <li><strong>Dynamic Cast Time:</strong> W's cast delay now dynamically adjusts based on Zeri's attack speed.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Auto W After Wall Dash:</strong> Added an option to automatically fire W at a nearby target while sliding on a wall with E.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>E (Spark Surge)</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Intuitive Wall Jumps:</strong> The wall jump system has been completely reworked.
+                                                <ul class="change-list">
+                                                    <li><strong>Mouse-Guided Jumps:</strong> Simply hold the Wall Jump key and hover your mouse near a jump spot to automatically move to the start point and dash across.</li>
+                                                    <li><strong>Expanded Jump Spots:</strong> More wall jump locations have been added across the map.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Improved Path Visualizer:</strong> The drawing for wall dashes is now more accurate, showing the single, true path Zeri will take.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>R (Lightning Crash)</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Block Manual R:</strong> Added a safety feature to prevent accidental R casts when no enemies in range.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Drawings & Visuals</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Buff Indicator Bars:</strong> Added new on-screen bars to track the duration and stacks of:
+                                                <ul class="change-list">
+                                                    <li>R (Lightning Crash) buff.</li>
+                                                    <li>E (Spark Surge) buff.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Q Cooldown Bar:</strong> Added a dedicated visual bar to track Q's cooldown.</li>
+                                            <li><strong>W Hitbox Visual:</strong> The prediction drawing for W is now much clearer, showing both the initial pulse and the wider extended laser.</li>
+                                            <li><strong>Debug Tools:</strong> Added a developer tool to easily print your coordinates for adding new custom wall jumps.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="patch-item">
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Jinx:</strong>
+                                <ul class="change-list">
+                                    <li><strong>W (Zap!) / R (Super Mega Death Rocket!):</strong> Added advanced accurate prediction mode.</li>
+                                    <li>
+                                        <strong>Q (Switcheroo!):</strong> Weapon switching logic was completely overhauled for more responsive and intelligent swapping:
+                                        <ul class="change-list">
+                                            <li>Added sliders for "Rocket Bonus Range" and "Minigun Bonus Range" for fine-tuned control over switching points.</li>
+                                            <li>Separated AoE rocket logic into distinct toggles for Combo and Waveclear.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>W (Zap!):</strong> The "Only use outside AA range" option is now split into individual toggles for:
+                                        <ul class="change-list">
+                                            <li>Combo</li>
+                                            <li>Harass</li>
+                                            <li>Laneclear</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>E (Flame Chompers!):</strong> Logic has been significantly improved and expanded:
+                                        <ul class="change-list">
+                                            <li>Combo logic was reworked into a dropdown menu with multiple modes: On CC, Predictive Pathing, and Always.</li>
+                                            <li>
+                                                <strong>Anti-Gapcloser logic was improved with a new dropdown menu for placement:</strong>
+                                                <ul class="change-list">
+                                                    <li><strong>On Self</strong> (places traps at your feet)</li>
+                                                    <li><strong>Intercept Path</strong> (predicts and places traps in a line to block the enemy's dash path)</li>
+                                                </ul>
+                                            </li>
+                                            <li>Added a new option to "Use E to Peel" against enemies walking towards you.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Visuals:</strong>
+                                        <ul class="change-list">
+                                            <li>Added a text indicator to show which enemies are killable with R.</li>
+                                            <li>Added an option to draw the R range on the minimap.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="patch-item">
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Zeri:</strong>
+                                <ul class="change-list">
+                                    <li>
+                                        <strong>Core / General:</strong>
+                                        <ul class="change-list">
+                                            <li>Script completely rewritten from the ground up for enhanced performance, accuracy, and new features.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>W:</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Prediction Rework:</strong> Completely new system for improved accuracy.
+                                                <ul class="change-list">
+                                                    <li>Cast time now dynamically scales with Zeri's bonus attack speed.</li>
+                                                    <li>Added separate advanced prediction toggles for terrain-piercing vs. normal W casts.</li>
+                                                </ul>
+                                            </li>
+                                            <li>Added an option to auto-cast W on a target immediately after dashing through a wall with E.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>E:</strong>
+                                        <ul class="change-list">
+                                            <li>Added a dedicated keybind for a new Q-E-Q combo mechanic.</li>
+                                            <li><strong>Wall Jumps:</strong> Added a dedicated keybind to use pre-set jump spots for quick escapes.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>R:</strong>
+                                        <ul class="change-list">
+                                            <li>Added an option to block manual R casts if no enemies are in range to prevent miscasts.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Quality of Life / Misc:</strong>
+                                        <ul class="change-list">
+                                            <li>Added an option to automatically use Q on enemy wards.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Visuals & User Experience:</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Status Display:</strong> Added a new system to show the status of key script settings with multiple modes:
+                                                <ul class="change-list">
+                                                    <li><strong>Permashow</strong> (in the top-left status bar).</li>
+                                                    <li><strong>Next to Champion</strong> (as a compact overlay).</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Buff Timers:</strong> Added on-screen bars to track the duration of R (Overcharge) and E (Lightning Rounds) buffs.</li>
+                                            <li><strong>Damage Indicator:</strong> Now calculates and includes damage from Zeri's Passive.</li>
+                                            <li><strong>E Visuals:</strong> Wall-dash path visualizer has been reworked to be significantly more accurate.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Farming:</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Passive (Living Battery) - Tower Interaction:</strong> The logic for this feature has been temporarily removed for a future rework. The menu option remains but is non-functional.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="patch-item">
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Jinx:</strong>
+                                <ul class="change-list">
+                                    <li><strong>W / R:</strong> Added advanced accurate prediction mode.</li>
+                                    <li>
+                                        <strong>Q:</strong> Logic completely reworked to be more responsive and intelligent.
+                                        <ul class="change-list">
+                                            <li>Now uses event-driven logic for faster weapon switching before an auto-attack.</li>
+                                            <li>Added an option to automatically switch to rockets for AoE damage on a configurable number of heroes.</li>
+                                            <li>Removed outdated HP/Range-based switches in favor of smarter, context-aware logic.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>W:</strong> Added new logic options and improved accuracy.
+                                        <ul class="change-list">
+                                            <li>Added an option to only use W on targets outside of auto-attack range.</li>
+                                            <li>Added a "Smart TTK Check" to prevent using W if auto-attacks would kill the target faster.</li>
+                                            <li>Corrected spell data (e.g., width) for more reliable predictions.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>E:</strong> Added new strategic casting options and improved accuracy.
+                                        <ul class="change-list">
+                                            <li>Added an option to automatically cast E on predicted enemy paths and key chokepoints.</li>
+                                            <li>Corrected spell data (trap radius) for better placement.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>R:</strong> Added a new safety check for combo usage.
+                                        <ul class="change-list">
+                                            <li>Added an option to prevent casting R in combo if the target is still within W range.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Visuals & Indicators:</strong> Complete overhaul of all visual elements for better clarity and more information.
+                                        <ul class="change-list">
+                                            <li>Added a comprehensive Damage Indicator on enemy health bars.</li>
+                                            <li>Added new, clearer indicators for weapon status (Pow-Pow/Fishbones) and passive ("GET EXCITED!") duration.</li>
+                                            <li>
+                                                <strong>Reworked the status display into a new Visualizer system with multiple modes:</strong>
+                                                <ul class="change-list">
+                                                    <li>Permashow (static info box)</li>
+                                                    <li>Next to Champion (dynamic overlay)</li>
+                                                    <li>Off</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Menu & Script Structure:</strong> Reworked the entire script for improved performance and user experience.
+                                        <ul class="change-list">
+                                            <li>Reorganized the menu to be ability-centric (Q, W, E, R settings are now in their own sections).</li>
+                                            <li>Added a new dedicated "Killsteal" settings menu.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="patch-item">
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Zeri:</strong>
+                                <ul class="change-list">
+                                    <li><strong>Complete Rework:</strong> Script has been rewritten from the ground up for improved performance, accuracy, and reliability.</li>
+                                    <li>
+                                        <strong>Logic:</strong>
+                                        <ul class="change-list">
+                                            <li>Switched to a more responsive Direct-Cast logic system, improving spell-casting speed.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>W (Ultrashock Laser):</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Prediction Rework:</strong> Implemented a new "Perfected W Prediction" system.
+                                                <ul class="change-list">
+                                                    <li>Dynamically adjusts cast time based on Zeri's attack speed for maximum accuracy.</li>
+                                                    <li>Intelligently differentiates between direct shots and wall-enhanced lasers.</li>
+                                                </ul>
+                                            </li>
+                                            <li>Added an option to automatically cast W on nearby enemies while sliding through a wall with E.</li>
+                                            <li>Added a menu option to only use W in combo if the target is outside of Q range.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>E (Spark Surge):</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Wall-Dashing Rework:</strong> The flee and wall-jump system has been completely overhauled.
+                                                <ul class="change-list">
+                                                    <li>Added new pre-set wall jump locations for quick and reliable escapes.</li>
+                                                    <li>Improved general wall-dashing logic towards the cursor.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>New Combo:</strong> Added a "Q-E-Q" combo activated by a dedicated hotkey.</li>
+                                            <li><strong>Chase Logic:</strong> E in combo is now a dedicated chase tool to close the gap on distant enemies.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>R (Lightning Crash):</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Visuals:</strong> Added an "Overcharge Bar" below the player's health bar to track the remaining duration of the R buff.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Menu & Visuals:</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Rework:</strong> The menu has been cleaned up and reorganized for better usability.</li>
+                                            <li>
+                                                <strong>Drawings Overhaul:</strong> Replaced simple range circles with advanced visualizers.
+                                                <ul class="change-list">
+                                                    <li><strong>E Path:</strong> Draws a predictive path for wall-dashes, showing entry, exit, and final landing position.</li>
+                                                    <li><strong>W Hitbox:</strong> Draws the precise hitbox for both the initial pulse and the extended laser.</li>
+                                                    <li><strong>Damage Indicator:</strong> Improved to be more accurate, now including passive damage in its calculation.</li>
+                                                </ul>
+                                            </li>
+                                            <li>Added a "Debug Tools" menu for adding new custom wall jump spots.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="patch-item">
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Ezreal:</strong>
+                                <ul class="change-list">
+                                    <li>
+                                        <strong>Prediction:</strong> Complete system overhaul for superior accuracy.
+                                        <ul class="change-list">
+                                            <li>Added a new advanced motion tracking system for enhanced tracking of enemy movement, including velocity, acceleration, and turn rate.</li>
+                                            <li>
+                                                <strong>Added new Prediction Modes in the menu:</strong>
+                                                <ul class="change-list">
+                                                    <li><strong>Default:</strong> Balanced mode for all situations.</li>
+                                                    <li><strong>Extremely Accurate:</strong> High-precision mode that casts less often but with maximum accuracy.</li>
+                                                </ul>
+                                            </li>
+                                            <li>This new system replaces the old "Advanced Prediction Distance" slider.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Menu:</strong> Complete visual and structural overhaul.
+                                        <ul class="change-list">
+                                            <li>Reorganized into a cleaner, more intuitive layout with dedicated sections for each ability, making it more user-friendly.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Farming:</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Q (Mystic Shot) laneclear logic has been completely rewritten to be much smarter.</strong>
+                                                <ul class="change-list">
+                                                    <li>Intelligently prioritizes last-hitting valuable minions (e.g., Siege minions).</li>
+                                                    <li>Avoids wasting Q on minions that can be killed by an auto-attack.</li>
+                                                    <li>Improved target selection in "Full Clear" mode to efficiently soften up waves.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Drawings & Visuals:</strong> Major improvements and new additions for better feedback.
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Added advanced new `Q Prediction Visualizer` that shows:</strong>
+                                                <ul class="change-list">
+                                                    <li>Time to impact.</li>
+                                                    <li>Target speed.</li>
+                                                    <li>Prediction confidence score.</li>
+                                                    <li>Live collision detection.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Added `Fast Prediction Indicator`:</strong> A visual timer that appears after using E or Flash, indicating that a faster, more reactive prediction mode is temporarily active.</li>
+                                            <li>Added a new, cleaner `Passive Indicator` with a timer bar.</li>
+                                            <li>Damage indicator has been improved to include a full text breakdown of damage sources (Q, W, E, R, AA).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="patch-item">
+                        <ul class="patch-details">
+                            <li>
+                                <strong>Kog'Maw:</strong>
+                                <ul class="change-list">
+                                    <li><strong>Script Rework:</strong> Fully refactored for improved performance and a more user-friendly menu.</li>
+                                    <li><strong>Prediction:</strong> Added a new, more accurate prediction system for all skillshots.</li>
+                                    <li>
+                                        <strong>E (Void Ooze):</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Anti-Gapclose:</strong> Added an automatic utility function to use E to counter enemy dashes.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>R (Living Artillery):</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Added new automatic casting options:</strong>
+                                                <ul class="change-list">
+                                                    <li><strong>Finisher:</strong> Uses R to execute enemies below a configurable health percentage, ignoring the R stack limit if the target is killable.</li>
+                                                    <li><strong>Auto R on CC:</strong> Automatically uses R on crowd-controlled enemies.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Semi-Manual R:</strong> Added a keybind for manual casting assistance.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Farming:</strong>
+                                        <ul class="change-list">
+                                            <li>
+                                                <strong>Laneclear:</strong> Reworked with selectable modes and a dedicated cycle keybind.
+                                                <ul class="change-list">
+                                                    <li>Modes include: Q Only, E Only, Q + E, and Off.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Jungle Clear:</strong> Added a new, dedicated section for clearing the jungle with Q and E.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Drawings:</strong>
+                                        <ul class="change-list">
+                                            <li><strong>Damage Indicator:</strong> Added a new indicator to show potential burst damage on enemies.</li>
+                                            <li>
+                                                <strong>Visuals:</strong> Added new display options and customizations.
+                                                <ul class="change-list">
+                                                    <li>Added an on-screen display for the current laneclear mode.</li>
+                                                    <li>Added options to customize the color for each spell's range indicator.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- NEW PATCHES END -->
                     <!-- Patch Item -->
                     <li class="patch-item">
-                        <div class="log-date">June 7, 2025 - Cassiopeia v5.0.0</div>
+                        
                         <ul class="patch-details">
                             <li>
                                 <strong>Cassiopeia:</strong>
@@ -704,7 +1240,7 @@
                     </li>
                     <!-- /Patch Item -->
                     <li class="patch-item">
-                        <div class="log-date">June 6, 2025</div>
+                        
                         <ul class="patch-details">
                             <li>
                                 <strong>Mel:</strong>
@@ -719,7 +1255,7 @@
                     </li>
                     <!-- /Patch Item -->
                     <li class="patch-item">
-                        <div class="log-date">June 2, 2025</div>
+                        
                         <ul class="patch-details">
                             <li>
                                 <strong>Pyke:</strong>
@@ -734,7 +1270,7 @@
                     </li>
                     <!-- /Patch Item -->
                      <li class="patch-item">
-                        <div class="log-date">June 29, 2025</div>
+                        
                         <ul class="patch-details">
                              <li>
                                 <strong>Cassiopeia:</strong>
@@ -747,7 +1283,7 @@
                     </li>
                     <!-- /Patch Item -->
                      <li class="patch-item">
-                        <div class="log-date">June 16, 2025</div>
+                        
                         <ul class="patch-details">
                              <li>
                                 <strong>Caitlyn:</strong>
@@ -759,7 +1295,7 @@
                     </li>
                     <!-- /Patch Item -->
                     <li class="patch-item">
-                        <div class="log-date">General Update - v4.5.0</div>
+                        
                         <ul class="patch-details">
                              <li>
                                 <strong>Senna:</strong>
@@ -794,6 +1330,8 @@
                     <!-- /Patch Item -->
                 </ul>
             </div>
+        </div>
+
         <div class="info-section feedback fade-in-up">
             <h4>Feedback & Community</h4>
             <div class="feedback-links-wrapper">

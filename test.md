@@ -42,4 +42,7 @@
  🔹 Lane Clear: Uses W to clear minion waves efficiently, with a mana limit setting.
  🔹 Smart Killsteal: A comprehensive KS module that uses W and Empowered W to secure kills, but intelligently holds fire if a basic attack would be sufficient.
 
-all suggestions and feedback will be added during the next hours, please feel free to test, give me the feelings, options you want added or even bugs(probably none, I tried to make this CLEAN), but any new suggestion just message me and consider it added, i'll be working on yunara non-stop for the next 8/12h```
+all suggestions and feedback will be added during the next hours, please feel free to test,
+give me the feelings, options you want added or even bugs(probably none,
+I tried to make this CLEAN), but any new suggestion just message me and consider it added,
+i'll be working on yunara non-stop for the next 8/12h```

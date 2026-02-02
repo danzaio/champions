@@ -1206,12 +1206,12 @@ export const I18N = {
                     "description": "Our engine calculates target movement and spell velocity with millisecond precision, ensuring your skillshots never miss."
                 },
                 "security": {
-                    "title": "Undetected & Secure",
-                    "description": "Advanced humanizer patterns and low-level hooks ensure your account stays safe during high-level play."
+                    "title": "Optimized Performance",
+                    "description": "Smart calculations ensure the code runs smoothly without FPS drops, fully optimized against memory leaks."
                 },
                 "latency": {
                     "title": "Zero Latency",
-                    "description": "Highly optimized C++ core ensures minimal impact on your system performance, even in intense teamfights."
+                    "description": "Seamless integration with TargetSelector, Orbwalker, and Evade in perfection."
                 },
                 "combos": {
                     "title": "Smart Combos",

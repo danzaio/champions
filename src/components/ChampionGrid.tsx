@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 import { ChampionCard } from "./ChampionCard";
 import { ChampionDetails } from "./ChampionDetails";
 import { Input } from "@/components/ui/input";
-import { Search, Filter, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

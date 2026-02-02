@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/LanguageContext";
-import { Cpu, Github, MessageCircle, Send, Youtube } from "lucide-react";
+import { MessageCircle, Send, Youtube } from "lucide-react";
 import Link from "next/link";
 
 export const Footer = () => {

@@ -8,7 +8,12 @@ export const TerminalLoader = () => {
   const [lines, setLines] = useState<{text: string, type: 'cmd' | 'info' | 'success' | 'warning'}[]>([]);
   const [progress, setProgress] = useState(0);
   
-  const terminalLines = [
+  interface TerminalLine {
+    text: string;
+    type: 'cmd' | 'info' | 'success' | 'warning';
+  }
+
+  const terminalLines: TerminalLine[] = [
     { text: "DANZ-AIO OS [Version 10.0.22631.4751]", type: 'info' },
     { text: "(c) DanZ Corporation. All rights reserved.", type: 'info' },
     { text: "", type: 'info' },
@@ -30,7 +35,7 @@ export const TerminalLoader = () => {
     let currentLine = 0;
     const lineInterval = setInterval(() => {
       if (currentLine < terminalLines.length) {
-        setLines(prev => [...prev, terminalLines[currentLine] as any]);
+        setLines(prev => [...prev, terminalLines[currentLine]]);
         currentLine++;
       } else {
         clearInterval(lineInterval);
@@ -49,7 +54,7 @@ export const TerminalLoader = () => {
       clearInterval(lineInterval);
       clearInterval(progressInterval);
     };
-  }, []);
+  }, []); // terminalLines is constant inside the component but defined outside useEffect correctly now
 
   return (
     <AnimatePresence>

@@ -24,10 +24,6 @@ const RoleIcon = ({ role }: { role: string }) => {
 };
 
 const ChampionImage = ({ champion }: { champion: Champion }) => {
-  const [src, setSrc] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [errorCount, setErrorCount] = useState(0);
-
   const id = champion.id.toLowerCase();
   const base = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/`;
 
@@ -38,8 +34,17 @@ const ChampionImage = ({ champion }: { champion: Champion }) => {
     `${base}images/${id}_splash_uncentered_0.jpg`,
   ];
 
-  // Specific overrides
+  const [src, setSrc] = useState<string | null>(() => {
+    if (id === 'mel') return `${base}melloadscreen_0.mel.jpg`;
+    if (id === 'milio' || id === 'yunara' || id === 'zaahen') return `${base}${id}loadscreen_0.jpg`;
+    return sources[0];
+  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorCount, setErrorCount] = useState(0);
+
+  // Specific overrides are now handled in initial state
   useEffect(() => {
+    // If id changes, reset src
     if (id === 'mel') {
       setSrc(`${base}melloadscreen_0.mel.jpg`);
     } else if (id === 'milio' || id === 'yunara' || id === 'zaahen') {
@@ -47,7 +52,8 @@ const ChampionImage = ({ champion }: { champion: Champion }) => {
     } else {
       setSrc(sources[0]);
     }
-  }, [id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, base]);
 
   const handleError = () => {
     if (errorCount < sources.length - 1) {

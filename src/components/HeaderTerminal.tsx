@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export const HeaderTerminal = () => {
   const code = `local function angle_between(a, b)
     if not a or not b then return 0 end

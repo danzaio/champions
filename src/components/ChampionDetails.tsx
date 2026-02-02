@@ -35,9 +35,6 @@ const TabContentWrapper = ({ children, value }: { children: React.ReactNode; val
 );
 
 const ChampionSplash = ({ champion }: { champion: Champion }) => {
-  const [src, setSrc] = useState<string | null>(null);
-  const [errorCount, setErrorCount] = useState(0);
-
   const id = champion.id.toLowerCase();
   const base = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/images/`;
 
@@ -47,20 +44,19 @@ const ChampionSplash = ({ champion }: { champion: Champion }) => {
     `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/${id}loadscreen.jpg`,
   ];
 
+  const [src, setSrc] = useState<string | null>(() => {
+    if (id === 'mel') return `${base}melsplash_uncentered_0.mel.jpg`;
+    return sources[0];
+  });
+
   useEffect(() => {
     if (id === 'mel') {
       setSrc(`${base}melsplash_uncentered_0.mel.jpg`);
     } else {
       setSrc(sources[0]);
     }
-  }, [id]);
-
-  const handleError = () => {
-    if (errorCount < sources.length - 1) {
-      setErrorCount(prev => prev + 1);
-      setSrc(sources[errorCount + 1]);
-    }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, base]);
 
   if (!src) return null;
 

@@ -19,7 +19,6 @@ export const Hero = () => {
 
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const terminalY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const spotlightY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
 
   return (

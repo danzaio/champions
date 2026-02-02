@@ -17,9 +17,12 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   const [language, setLanguage] = useState<Language>('en');
 
   useEffect(() => {
-    const saved = localStorage.getItem('language') as Language;
-    if (saved && (saved === 'en' || saved === 'cn')) {
-      setLanguage(saved);
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('language') as Language;
+      if (saved && (saved === 'en' || saved === 'cn')) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setLanguage(saved);
+      }
     }
   }, []);
 
@@ -33,11 +36,11 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     let current: any = I18N[language];
     
     for (const key of keys) {
-      if (current[key] === undefined) return path;
+      if (!current || current[key] === undefined) return path;
       current = current[key];
     }
     
-    return current;
+    return typeof current === 'string' ? current : path;
   };
 
   return (

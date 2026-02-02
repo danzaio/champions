@@ -21,9 +21,9 @@
     "clsx": "latest",
     "framer-motion": "latest",
     "lucide-react": "^0.563.0",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "next": "15.1.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "tailwind-merge": "latest",
     "tailwindcss-animate": "^1.0.7"
   },

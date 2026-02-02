@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, useMotionValue, useMotionTemplate } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import { useLanguage } from "@/lib/LanguageContext";
 import { 
   ShieldCheck, 
@@ -8,10 +8,18 @@ import {
   Target, 
   MousePointer2, 
   Cpu, 
-  Infinity 
+  Infinity as InfinityIcon 
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import React, { useRef } from "react";
+import React, { useRef, FC } from "react";
+
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  icon: FC<{ size?: number; strokeWidth?: number }>;
+  className?: string;
+  index: number;
+}
 
 const FeatureCard = ({ 
   title, 
@@ -19,13 +27,7 @@ const FeatureCard = ({
   icon: Icon, 
   className,
   index,
-}: { 
-  title: string; 
-  description: string; 
-  icon: any; 
-  className?: string;
-  index: number;
-}) => {
+}: FeatureCardProps) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -47,7 +49,6 @@ const FeatureCard = ({
         className
       )}
     >
-      {/* Interactive Spotlight Overlay */}
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
@@ -77,12 +78,8 @@ const FeatureCard = ({
 export const Features = () => {
   const { t } = useLanguage();
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+  const featuresTitle = t("home.features.title");
 
   return (
     <section ref={containerRef} id="features" className="py-32 bg-transparent relative overflow-hidden">
@@ -97,21 +94,21 @@ export const Features = () => {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl font-bold tracking-tighter mb-6"
           >
-            {t("home.features.title").includes("Elite") ? (
-              t("home.features.title").split(" ").map((word: string, i: number, arr: string[]) => (
+            {featuresTitle.includes("Elite") ? (
+              featuresTitle.split(" ").map((word: string, i: number, arr: string[]) => (
                 <React.Fragment key={i}>
                   {word === "Elite" ? <span className="text-gold-500">{word}</span> : word}
                   {i < arr.length - 1 ? " " : ""}
                 </React.Fragment>
               ))
-            ) : t("home.features.title").includes("精英") ? (
+            ) : featuresTitle.includes("精英") ? (
               <>
-                {t("home.features.title").split("精英")[0]}
+                {featuresTitle.split("精英")[0]}
                 <span className="text-gold-500">精英</span>
-                {t("home.features.title").split("精英")[1]}
+                {featuresTitle.split("精英")[1]}
               </>
             ) : (
-              t("home.features.title")
+              featuresTitle
             )}
           </motion.h2>
           <motion.p 
@@ -165,7 +162,7 @@ export const Features = () => {
             index={5}
             title={t("home.features.updates.title")}
             description={t("home.features.updates.description")}
-            icon={Infinity}
+            icon={InfinityIcon}
           />
         </div>
       </div>

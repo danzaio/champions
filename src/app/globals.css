@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(0 0% 0%);
+  --color-foreground: hsl(0 0% 100%);
+  --color-primary: hsl(47 100% 50%);
+  --color-primary-foreground: hsl(0 0% 0%);
+  --color-card: hsl(0 0% 3%);
+  --color-card-foreground: hsl(0 0% 100%);
+  --color-popover: hsl(0 0% 3%);
+  --color-popover-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(0 0% 9%);
+  --color-secondary-foreground: hsl(0 0% 100%);
+  --color-muted: hsl(0 0% 9%);
+  --color-muted-foreground: hsl(0 0% 63.9%);
+  --color-accent: hsl(47 100% 50%);
+  --color-accent-foreground: hsl(0 0% 0%);
+  --color-destructive: hsl(0 62.8% 30.6%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+  --color-border: hsl(0 0% 14.9%);
+  --color-input: hsl(0 0% 14.9%);
+  --color-ring: hsl(47 100% 50%);
+  
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+
+  --color-gold-50: #fffdf0;
+  --color-gold-100: #fff9d6;
+  --color-gold-200: #fff0ad;
+  --color-gold-300: #ffe175;
+  --color-gold-400: #ffd03d;
+  --color-gold-500: #ffd700;
+  --color-gold-600: #e6b800;
+  --color-gold-700: #bf8f00;
+  --color-gold-800: #997000;
+  --color-gold-900: #7d5c00;
+  --color-gold-950: #4a3500;
+
+  --font-display: var(--font-display), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-gold-500/30 selection:text-gold-500;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .text-gradient-gold {
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #ffd03d, #ffd700, #e6b800);
+  }
+  .bg-grid-white {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='white' stroke-opacity='0.03'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+  }
+
+  @keyframes flicker {
+    0% { opacity: 0.97; }
+    5% { opacity: 0.95; }
+    10% { opacity: 0.9; }
+    15% { opacity: 0.95; }
+    20% { opacity: 0.98; }
+    25% { opacity: 0.95; }
+    30% { opacity: 0.9; }
+    35% { opacity: 0.98; }
+    40% { opacity: 0.95; }
+    45% { opacity: 0.97; }
+    50% { opacity: 0.94; }
+    55% { opacity: 0.96; }
+    60% { opacity: 0.99; }
+    65% { opacity: 0.95; }
+    70% { opacity: 0.9; }
+    75% { opacity: 0.95; }
+    80% { opacity: 0.98; }
+    85% { opacity: 0.96; }
+    90% { opacity: 0.94; }
+    95% { opacity: 0.99; }
+    100% { opacity: 0.97; }
+  }
+
+  .animate-flicker {
+    animation: flicker 0.15s infinite;
+  }
+}

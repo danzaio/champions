@@ -36,29 +36,26 @@ const TabContentWrapper = ({ children, value }: { children: React.ReactNode; val
 
 const ChampionSplash = ({ champion }: { champion: Champion }) => {
   const id = champion.id.toLowerCase();
-  const base = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/images/`;
-
-  const sources = [
-    `${base}${id}_splash_uncentered_0.jpg`,
-    `${base}${id}_splash_centered_0.jpg`,
-    `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/${id}loadscreen.jpg`,
-  ];
-
-  const [src, setSrc] = useState<string | null>(() => {
-    if (id === 'mel') return `${base}melsplash_uncentered_0.mel.jpg`;
-    return sources[0];
-  });
+  const [src, setSrc] = useState<string>(`/champions/champions/${id}.jpg`);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (id === 'mel') {
-      setSrc(`${base}melsplash_uncentered_0.mel.jpg`);
-    } else {
-      setSrc(sources[0]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, base]);
+    setSrc(`/champions/champions/${id}.jpg`);
+    setError(false);
+  }, [id]);
 
-  if (!src) return null;
+  // Fallback to remote if local fails (e.g. for custom champions like Mel/Yunara/Zaahen)
+  const handleFallback = () => {
+    if (error) return;
+    
+    const base = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/images/`;
+    let fallbackUrl = `${base}${id}_splash_uncentered_0.jpg`;
+    
+    if (id === 'mel') fallbackUrl = `${base}melsplash_uncentered_0.mel.jpg`;
+    
+    setSrc(fallbackUrl);
+    setError(true);
+  };
 
   return (
     <div
@@ -67,7 +64,15 @@ const ChampionSplash = ({ champion }: { champion: Champion }) => {
         backgroundImage: `url('${src}')`,
         backgroundColor: `${champion.color}20`
       }}
-    />
+    >
+      {/* Hidden img to trigger fallback if local file is missing */}
+      <img
+        src={src}
+        className="hidden"
+        onError={handleFallback}
+        alt=""
+      />
+    </div>
   );
 };
 

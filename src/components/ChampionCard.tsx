@@ -25,39 +25,28 @@ const RoleIcon = ({ role }: { role: string }) => {
 
 const ChampionImage = ({ champion }: { champion: Champion }) => {
   const id = champion.id.toLowerCase();
-  const base = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/`;
-
-  const sources = [
-    `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/${id}loadscreen.jpg`,
-    `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/${id}loadscreen_0.jpg`,
-    `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name.replace(/['\s\.‌]/g, '')}_0.jpg`,
-  ];
-
-  const [src, setSrc] = useState<string | null>(() => {
-    if (id === 'mel') return `${base}melloadscreen_0.mel.jpg`;
-    if (id === 'milio' || id === 'yunara' || id === 'zaahen') return `${base}${id}loadscreen_0.jpg`;
-    return sources[0];
-  });
+  const [src, setSrc] = useState<string>(`/champions/champions/${id}.jpg`);
   const [isLoading, setIsLoading] = useState(true);
   const [errorCount, setErrorCount] = useState(0);
 
-  // Specific overrides are now handled in initial state
   useEffect(() => {
-    // If id changes, reset src
-    if (id === 'mel') {
-      setSrc(`${base}melloadscreen_0.mel.jpg`);
-    } else if (id === 'milio' || id === 'yunara' || id === 'zaahen') {
-      setSrc(`${base}${id}loadscreen_0.jpg`);
-    } else {
-      setSrc(sources[0]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, base]);
+    setSrc(`/champions/champions/${id}.jpg`);
+    setIsLoading(true);
+    setErrorCount(0);
+  }, [id]);
 
   const handleError = () => {
-    if (errorCount < sources.length - 1) {
+    const base = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/`;
+    const remoteSources = [
+      `${base}${id}loadscreen.jpg`,
+      `${base}${id}loadscreen_0.jpg`,
+      `${base}images/${id}_load_screen_0.jpg`,
+      `${base}images/${id}_splash_uncentered_0.jpg`,
+    ];
+
+    if (errorCount < remoteSources.length) {
+      setSrc(remoteSources[errorCount]);
       setErrorCount(prev => prev + 1);
-      setSrc(sources[errorCount + 1]);
     } else {
       setSrc('https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png');
       setIsLoading(false);

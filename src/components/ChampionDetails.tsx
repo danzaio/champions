@@ -87,6 +87,12 @@ export const ChampionDetails = ({ champion, isOpen, onClose }: ChampionDetailsPr
             className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent z-10"
           />
           <ChampionSplash champion={champion} />
+          <div className="absolute top-4 right-4 z-50 md:hidden">
+              <button onClick={onClose} className="p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors">
+                  <span className="sr-only">Close</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+          </div>
           <div className="absolute bottom-8 left-8 z-20">
             <div className="flex items-center gap-3 mb-2">
                <Badge className="bg-gold-500 text-black font-bold uppercase tracking-widest text-[10px]">

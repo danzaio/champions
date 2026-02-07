@@ -22,7 +22,7 @@ export const TerminalLoader = () => {
     { text: "Neural Prediction Engine: [OK]", type: 'success' },
     { text: "DataDragon Sync: [OK]", type: 'success' },
     { text: "Bilingual Translation Layer: [OK]", type: 'success' },
-    { text: "Hanbot SDK Bridge: [CONNECTED]", type: 'success' },
+    { text: "SDK Bridge: [CONNECTED]", type: 'success' },
     { text: "", type: 'info' },
     { text: "C:\\> start_interface.sh", type: 'cmd' },
     { text: "Compiling shaders...", type: 'warning' },

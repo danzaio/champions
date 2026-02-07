@@ -47,6 +47,14 @@
   }
   body {
     @apply bg-background text-foreground antialiased selection:bg-gold-500/30 selection:text-gold-500;
+    cursor: url('/champions/cursor-32.png'), url('/cursor-32.png'), auto;
+  }
+  
+  a, button, [role="button"], .cursor-pointer {
+    cursor: url('/champions/cursor-32.png'), url('/cursor-32.png'), pointer;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }
 

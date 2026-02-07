@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/LanguageContext";
+import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { TerminalLoader } from "@/components/ui/terminal-loader";
@@ -11,7 +12,7 @@ const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-display" }
 
 export const metadata: Metadata = {
   title: "DanZ-AIO | Ultimate Champion Scripts",
-  description: "High-performance champion scripts for Hanbot SDK",
+  description: "High-performance champion scripts",
 };
 
 export default function RootLayout({
@@ -28,10 +29,12 @@ export default function RootLayout({
           <ShootingStars />
         </div>
         <LanguageProvider>
-          <TerminalLoader />
-          <div className="relative z-10">
-            {children}
-          </div>
+          <SmoothScrollProvider>
+            <TerminalLoader />
+            <div className="relative z-10">
+              {children}
+            </div>
+          </SmoothScrollProvider>
         </LanguageProvider>
       </body>
     </html>

@@ -1187,12 +1187,12 @@ export const CHAMPIONS: Champion[] = [
 
 export const I18N = {
     en: {
-        "app": { "title": "DanZ-AIO", "subtitle": "Champion Scripts", "description": "High-performance champion scripts for Hanbot SDK" },
+        "app": { "title": "DanZ-AIO", "subtitle": "Champion Scripts", "description": "High-performance champion scripts" },
         "nav": { "home": "Home", "champions": "Champions", "changelog": "Changelog", "about": "About", "discord": "Discord", "telegram": "Telegram" },
         "home": {
             "hero": {
                 "title": "Ultimate Scripts",
-                "subtitle": "for Hanbot SDK",
+                "subtitle": "Professional Grade",
                 "badge": "Next Generation Scripts",
                 "description": "High-performance, reliable champion scripts with advanced prediction, smart combos, and automated mechanics.",
                 "cta": "Browse Champions",
@@ -1219,7 +1219,7 @@ export const I18N = {
                 },
                 "core": {
                     "title": "Internal Core",
-                    "description": "Leveraging the full potential of Hanbot SDK with deep internal game integration and memory hooks."
+                    "description": "Leveraging the full potential of the engine with deep internal game integration and memory hooks."
                 },
                 "updates": {
                     "title": "Always Updated",
@@ -1275,9 +1275,9 @@ export const I18N = {
             "updatedChampions": "Updated Champions",
             "fixes": "Fixes"
         },
-        "footer": { 
-            "description": "Providing high-performance, reliable champion scripts for the Hanbot SDK community since 2024.",
-            "disclaimer": "© 2024 DanZ-AIO. For educational purposes only.", 
+        "footer": {
+            "description": "Providing high-performance, reliable champion scripts for the community since 2024.",
+            "disclaimer": "© 2024 DanZ-AIO. For educational purposes only.",
             "status": "System Online",
             "platform": "Platform",
             "support": "Support",
@@ -1312,12 +1312,12 @@ export const I18N = {
         }
     },
     cn: {
-        "app": { "title": "DanZ-AIO", "subtitle": "英雄脚本", "description": "为 Hanbot SDK 打造的高性能英雄脚本" },
+        "app": { "title": "DanZ-AIO", "subtitle": "英雄脚本", "description": "高性能英雄脚本" },
         "nav": { "home": "首页", "champions": "英雄", "changelog": "更新日志", "about": "关于", "discord": "Discord", "telegram": "Telegram" },
         "home": {
             "hero": {
                 "title": "终极脚本",
-                "subtitle": "为 Hanbot SDK",
+                "subtitle": "专业级",
                 "badge": "下一代脚本技术",
                 "description": "高性能、可靠的英雄脚本，具有先进的预测、智能连招和自动化机制。",
                 "cta": "浏览英雄",
@@ -1336,7 +1336,7 @@ export const I18N = {
                 },
                 "latency": {
                     "title": "零延迟",
-                    "description": "高度优化的 C++ 核心确保对系统性能的影响降至最低，即使在激烈的团战中也是如此。"
+                    "description": "高度优化的核心确保对系统性能的影响降至最低，即使在激烈的团战中也是如此。"
                 },
                 "combos": {
                     "title": "智能连招",
@@ -1344,7 +1344,7 @@ export const I18N = {
                 },
                 "core": {
                     "title": "内部核心",
-                    "description": "充分利用 Hanbot SDK 的潜力，实现深层内部游戏集成和内存钩子。"
+                    "description": "充分利用引擎的潜力，实现深层内部游戏集成和内存钩子。"
                 },
                 "updates": {
                     "title": "持续更新",
@@ -1401,9 +1401,9 @@ export const I18N = {
             "updatedChampions": "更新英雄",
             "fixes": "修复"
         },
-        "footer": { 
-            "description": "自 2024 年以来，为 Hanbot SDK 社区提供高性能、可靠的英雄脚本。",
-            "disclaimer": "© 2024 DanZ-AIO. 仅供教育目的使用。", 
+        "footer": {
+            "description": "自 2024 年以来，为社区提供高性能、可靠的英雄脚本。",
+            "disclaimer": "© 2024 DanZ-AIO. 仅供教育目的使用。",
             "status": "系统在线",
             "platform": "平台",
             "support": "支持",

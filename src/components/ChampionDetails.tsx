@@ -36,11 +36,11 @@ const TabContentWrapper = ({ children, value }: { children: React.ReactNode; val
 
 const ChampionSplash = ({ champion }: { champion: Champion }) => {
   const id = champion.id.toLowerCase();
-  const [src, setSrc] = useState<string>(`/champions/champions/${id}.jpg`);
+  const [src, setSrc] = useState<string>(`/champions/splash/${id}.jpg`);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    setSrc(`/champions/champions/${id}.jpg`);
+    setSrc(`/champions/splash/${id}.jpg`);
     setError(false);
   }, [id]);
 

@@ -25,12 +25,12 @@ const RoleIcon = ({ role }: { role: string }) => {
 
 const ChampionImage = ({ champion }: { champion: Champion }) => {
   const id = champion.id.toLowerCase();
-  const [src, setSrc] = useState<string>(`/champions/champions/${id}.jpg`);
+  const [src, setSrc] = useState<string>(`/champions/card/${id}.jpg`);
   const [isLoading, setIsLoading] = useState(true);
   const [errorCount, setErrorCount] = useState(0);
 
   useEffect(() => {
-    setSrc(`/champions/champions/${id}.jpg`);
+    setSrc(`/champions/card/${id}.jpg`);
     setIsLoading(true);
     setErrorCount(0);
   }, [id]);

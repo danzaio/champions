@@ -37,7 +37,7 @@ const ChampionImage = ({ champion }: { champion: Champion }) => {
   const [src, setSrc] = useState<string | null>(() => {
     if (id === 'mel') return `${base}melloadscreen_0.mel.jpg`;
     if (id === 'milio' || id === 'yunara' || id === 'zaahen') return `${base}${id}loadscreen_0.jpg`;
-    return sources[0];
+    return `${base}${id}loadscreen.jpg`;
   });
   const [isLoading, setIsLoading] = useState(true);
   const [errorCount, setErrorCount] = useState(0);

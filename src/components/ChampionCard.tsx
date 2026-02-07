@@ -28,17 +28,15 @@ const ChampionImage = ({ champion }: { champion: Champion }) => {
   const base = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/`;
 
   const sources = [
-    `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name.replace(/['\s]/g, '')}_0.jpg`,
-    `${base}${id}loadscreen.jpg`,
-    `${base}${id}loadscreen_0.jpg`,
-    `${base}images/${id}_load_screen_0.jpg`,
+    `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/${id}loadscreen.jpg`,
+    `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${id}/skins/base/${id}loadscreen_0.jpg`,
+    `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name.replace(/['\s\.‌]/g, '')}_0.jpg`,
   ];
 
   const [src, setSrc] = useState<string | null>(() => {
     if (id === 'mel') return `${base}melloadscreen_0.mel.jpg`;
     if (id === 'milio' || id === 'yunara' || id === 'zaahen') return `${base}${id}loadscreen_0.jpg`;
-    // DDragon is generally faster for these specific vertical loading screens
-    return `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name.replace(/['\s]/g, '')}_0.jpg`;
+    return sources[0];
   });
   const [isLoading, setIsLoading] = useState(true);
   const [errorCount, setErrorCount] = useState(0);

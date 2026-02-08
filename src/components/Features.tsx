@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate, Variants } from "framer-motion";
 import { useLanguage } from "@/lib/LanguageContext";
 import { 
   ShieldCheck, 
@@ -21,7 +21,7 @@ interface FeatureCardProps {
   index: number;
 }
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -32,7 +32,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,

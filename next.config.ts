@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   basePath: '/champions',
   trailingSlash: true,
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

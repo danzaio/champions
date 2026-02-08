@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CHAMPIONS, Champion } from "@/lib/data";
 import { useLanguage } from "@/lib/LanguageContext";
 import { ChampionCard } from "./ChampionCard";
 import { ChampionDetails } from "./ChampionDetails";
+import { ChampionCardSkeleton } from "./Skeletons";
 import { Input } from "@/components/ui/input";
 import { Search, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,6 +17,13 @@ export const ChampionGrid = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [selectedChampion, setSelectedChampion] = useState<Champion | null>(null);
+  const [isFiltering, setIsFiltering] = useState(true);
+
+  useEffect(() => {
+    setIsFiltering(true);
+    const timer = setTimeout(() => setIsFiltering(false), 500);
+    return () => clearTimeout(timer);
+  }, [searchQuery, selectedRole]);
 
   const filteredChampions = CHAMPIONS.filter((champion) => {
     const matchesSearch = 
@@ -82,21 +90,35 @@ export const ChampionGrid = () => {
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6"
       >
         <AnimatePresence mode="popLayout">
-          {filteredChampions.map((champion, index) => (
-            <motion.div
-              key={champion.id}
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
-              <ChampionCard
-                champion={champion}
-                onClick={() => setSelectedChampion(champion)}
-              />
-            </motion.div>
-          ))}
+          {isFiltering ? (
+            Array.from({ length: 12 }).map((_, index) => (
+              <motion.div
+                key={`skeleton-${index}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ChampionCardSkeleton />
+              </motion.div>
+            ))
+          ) : (
+            filteredChampions.map((champion, index) => (
+              <motion.div
+                key={champion.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <ChampionCard
+                  champion={champion}
+                  onClick={() => setSelectedChampion(champion)}
+                />
+              </motion.div>
+            ))
+          )}
         </AnimatePresence>
       </motion.div>
 
@@ -106,7 +128,7 @@ export const ChampionGrid = () => {
         onClose={() => setSelectedChampion(null)}
       />
 
-      {filteredChampions.length === 0 && (
+      {!isFiltering && filteredChampions.length === 0 && (
         <div className="text-center py-20">
           <div className="text-white/20 mb-4 flex justify-center">
             <Search size={64} />

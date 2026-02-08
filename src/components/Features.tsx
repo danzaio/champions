@@ -21,6 +21,29 @@ interface FeatureCardProps {
   index: number;
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+};
+
 const FeatureCard = ({ 
   title, 
   description, 
@@ -39,10 +62,7 @@ const FeatureCard = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      variants={itemVariants}
       onMouseMove={handleMouseMove}
       className={cn(
         "group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 p-8 transition-colors duration-300 hover:bg-zinc-900/80 hover:border-gold-500/20",
@@ -122,7 +142,13 @@ export const Features = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           <FeatureCard
             index={0}
             title={t("home.features.prediction.title")}
@@ -164,7 +190,7 @@ export const Features = () => {
             description={t("home.features.updates.description")}
             icon={InfinityIcon}
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
